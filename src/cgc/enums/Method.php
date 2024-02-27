@@ -1,11 +1,12 @@
-<?php namespace cgc\enums;
+<?php
 
-enum Method {
-	case GET;
-	case POST;
-	case PUT;
-	case DELETE;
-	case PATCH;
+namespace cgc\enums;
+
+enum Method
+{
+  case GET;
+  case POST;
+  case PUT;
+  case DELETE;
+  case PATCH;
 };
-
-

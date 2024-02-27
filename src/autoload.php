@@ -6,17 +6,17 @@ spl_autoload_register(function ($class) {
 });
 
 // register error error_handler
-set_error_handler(function($message, $code, $err_number, $err_file, $line) {
-  if(headers_sent() === false) {
+set_error_handler(function ($message, $code, $err_number, $err_file, $line) {
+  if (headers_sent() === false) {
     header('Content-Type: application/json');
   }
   echo json_encode([
     'error' => [
       'message' => $message,
       'code' => $code,
+      'error_number' => $err_number,
       'file' => $err_file,
       'line' => $line
     ]
   ]);
-
 });

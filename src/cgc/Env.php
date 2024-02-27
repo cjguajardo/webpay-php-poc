@@ -1,21 +1,25 @@
-<?php namespace cgc;
+<?php
+
+namespace cgc;
 
 /** Reads .env file **/
-class Env {
+class Env
+{
 
-  public static function load($path='./'){
-    if(file_exists($path)) {
+  public static function load($path = './')
+  {
+    if (file_exists($path)) {
       $content = file_get_contents($path);
       $lines = explode("\n", $content);
-      
-      foreach($lines as $line) {
+
+      foreach ($lines as $line) {
         $line = trim($line);
-        if($line!=='' && stripos($line, '=')!==false) {
+        if ($line !== '' && stripos($line, '=') !== false) {
           putenv($line);
         }
       }
     } else {
-      throw new \Exception('File not found: '.$path);
+      throw new \Exception('File not found: ' . $path);
     }
   }
 
@@ -33,5 +37,4 @@ class Env {
     }
     return $value;
   }
-
 }

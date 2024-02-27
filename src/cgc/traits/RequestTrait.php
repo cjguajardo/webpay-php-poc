@@ -1,9 +1,13 @@
-<?php namespace cgc\traits;
+<?php
+
+namespace cgc\traits;
 
 use cgc\enums\Method;
 
-Trait RequestTrait {
-  private function create_curl_options(array $data, Method $method){
+trait RequestTrait
+{
+  private function create_curl_options(array $data, Method $method)
+  {
     $method = strtoupper($method->name);
 
     $options = array(
@@ -20,7 +24,8 @@ Trait RequestTrait {
     return $options;
   }
 
-  private function send_request(string $url, array $data, Method $method){
+  private function send_request(string $url, array $data, Method $method)
+  {
     $curl = curl_init();
 
     $options = $this->create_curl_options($data, $method);
@@ -41,6 +46,4 @@ Trait RequestTrait {
     curl_close($curl);
     return json_decode($result, true);
   }
-
-
 }
